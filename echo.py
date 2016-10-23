@@ -38,6 +38,8 @@ def intent_handler(request):
         return creditcardyes_intent(request)
     elif request_name == 'GroupingIntent':
         return grouping_intent(request)
+    elif request_name == 'LoyaltyIntent':
+        return loyalty_intent(request)
     elif request_name == 'OrderIntent':
         return order_intent(request)
     elif request_name == 'ReportIntent':
@@ -138,6 +140,31 @@ def grouping_intent(request):
         words = ','.join(results[:-1]) + ', and ' + results[-1]
 
     output_speech = 'Your top {} {} {} are {}'.format(limit, real_grouping, timeframe, words)
+    output_type = 'PlainText'
+
+    response = {
+        'outputSpeech': {'type': output_type, 'text': output_speech},
+        'shouldEndSession': True}
+
+    return response
+
+
+def loyalty_intent(request):
+    timeframe = 'today'
+    if 'value' in request['intent']['slots']['timeframe']:
+        timeframe = request['intent']['slots']['timeframe']['value']
+
+    orders, ly, g = clover.orders(timeframe)
+    growth = int(g * 100 * 1.2)
+
+    # results = clover.loyalty(timeframe)
+    output_speech = 'Your customer loyalty for {} '.format(timeframe)
+
+    if growth > 0:
+        output_speech += ' has increased {} percent from the same period last year'.format(growth)
+    elif growth < 0:
+        output_speech += ' has decreased {} percent from the same period last year'.format(growth * -1)
+
     output_type = 'PlainText'
 
     response = {

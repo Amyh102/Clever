@@ -35,6 +35,19 @@ GroupingIntent what my top {topN} {grouping} are for {timeframe}
 GroupingIntent what my top {topN} {grouping} was for {timeframe}
 GroupingIntent what my top {topN} {grouping} were for {timeframe}
 
+LoyaltyIntent about my customer breakdown
+LoyaltyIntent about the customer breakdown
+LoyaltyIntent what my customer breakdown was
+LoyaltyIntent what the customer breakdown was
+LoyaltyIntent about my customer breakdown {timeframe}
+LoyaltyIntent about the customer breakdown {timeframe}
+LoyaltyIntent what my customer breakdown was {timeframe}
+LoyaltyIntent what the customer breakdown was {timeframe}
+LoyaltyIntent about my customer breakdown for {timeframe}
+LoyaltyIntent about the customer breakdown for {timeframe}
+LoyaltyIntent what my customer breakdown was for {timeframe}
+LoyaltyIntent what the customer breakdown was for {timeframe}
+
 OrderIntent how many orders did I do {timeframe}
 OrderIntent how many orders did I did {timeframe}
 OrderIntent how many orders did I have {timeframe}

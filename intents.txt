@@ -30,6 +30,15 @@
       ]
     },
     {
+      "intent": "LoyaltyIntent",
+      "slots": [
+        {
+          "name": "timeframe",
+          "type": "TIMEFRAME"
+        }
+      ]
+    },
+    {
       "intent": "OrderIntent",
       "slots": [
         {

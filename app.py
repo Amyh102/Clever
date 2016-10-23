@@ -1,11 +1,10 @@
 import clover
 import echo
-import json
 import os
 import re
 import synchrony
 
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask.ext.cors import CORS
 
 
@@ -33,7 +32,13 @@ def synchrony_confirm():
     credit_line = status['applyResponse']['applyResponse']['dcTempCreditLine']
     card_number = status['applyResponse']['applyResponse']['accountNumber']
     card_split = " ".join(re.findall('....', card_number))
-    return "<br /><br /><center style='font-family: Helvetica, Sans-Serif'>Congratulations, you have been approved with a ${} credit line.<br /><br /><br />{}</center>".format(credit_line, card_split)
+
+    data = {
+        'header': 'Congratulations, you have been approved with a ${} credit line.'.format(credit_line),
+        'name': clover.merchant_info()['owner']['name'],
+        'number': card_split
+    }
+    return render_template('card.html', data=data)
 
 
 if __name__ == '__main__':
