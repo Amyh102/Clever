@@ -1,4 +1,5 @@
 import json
+import os
 
 import clover
 import synchrony
@@ -7,6 +8,8 @@ import sms
 
 # Ugh....
 IS_APPLYING = False
+SYNCHRONY_ACCOUNT = 100012
+APP_TO_PHONE = os.environ.get('APP_TO_PHONE', '')
 
 
 def data_handler(raw_data):
@@ -57,7 +60,7 @@ def advice_intent(request):
     output_speech = 'Based on your spend in the {} category, you may be interested in applying for a {}. Would you like to apply?'
     output_type = 'PlainText'
 
-    category = synchrony.next_purchase(100001)
+    category = synchrony.next_purchase(SYNCHRONY_ACCOUNT)
     credit_card = synchrony.next_card(category)
     output_speech = output_speech.format(category, credit_card)
 
@@ -93,7 +96,7 @@ def creditcardyes_intent(request):
     output_speech = 'Great! I have conveniently filled out the application form and sent you a text message to confirm. Please reply with the last 4 digits of your social security number to finish the application.'
     output_type = 'PlainText'
 
-    sms.send_confirmation_text('+14156109104', 'Your credit card application is ready, please reply with the last 4 digits of your SSN to confirm.')
+    sms.send_confirmation_text(APP_TO_PHONE, 'Your credit card application is ready, please reply with the last 4 digits of your SSN to confirm.')
 
     response = {
         'outputSpeech': {'type': output_type, 'text': output_speech},
