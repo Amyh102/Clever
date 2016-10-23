@@ -1,5 +1,7 @@
-import clover
 import json
+
+import clover
+import synchrony
 
 
 def data_handler(raw_data):
@@ -33,8 +35,10 @@ def intent_handler(request):
 
 
 def advice_intent(request):
-    output_speech = 'You should apply for a credit card.'
+    output_speech = 'Based on your spend, you may be interested in applying for a {} credit card.'
     output_type = 'PlainText'
+
+    output_speech = output_speech.format(synchrony.next_card(100001))
 
     response = {
         'outputSpeech': {'type': output_type, 'text': output_speech},
