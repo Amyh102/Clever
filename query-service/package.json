@@ -1,0 +1,23 @@
+{
+  "name": "query-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "juice": "^3.0.1",
+    "limiter": "^1.1.0",
+    "lodash": "^4.16.4",
+    "moment": "^2.15.1",
+    "nodemailer": "^2.6.4",
+    "numeral": "^1.5.3",
+    "request": "^2.75.0",
+    "service": "git://github.com/42debut/service.git#master",
+    "underscore.string": "^3.3.4"
+  }
+}
