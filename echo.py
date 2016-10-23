@@ -4,6 +4,10 @@ import clover
 import synchrony
 
 
+# Ugh....
+IS_APPLYING = False
+
+
 def data_handler(raw_data):
     request = raw_data['request']
 
@@ -24,6 +28,10 @@ def intent_handler(request):
 
     if request_name == 'AdviceIntent':
         return advice_intent(request)
+    elif request_name == 'CreditCardNoIntent':
+        return creditcardno_intent(request)
+    elif request_name == 'CreditCardYesIntent':
+        return creditcardyes_intent(request)
     elif request_name == 'GroupingIntent':
         return grouping_intent(request)
     elif request_name == 'OrderIntent':
@@ -42,10 +50,47 @@ def intent_handler(request):
 
 
 def advice_intent(request):
-    output_speech = 'Based on your spend, you may be interested in applying for a {} credit card.'
+    global IS_APPLYING
+    IS_APPLYING = True
+
+    output_speech = 'Based on your spend in the {} category, you may be interested in applying for a {}. Would you like to apply?'
     output_type = 'PlainText'
 
-    output_speech = output_speech.format(synchrony.next_card(100001))
+    category = synchrony.next_purchase(100001)
+    credit_card = synchrony.next_card(category)
+    output_speech = output_speech.format(category, credit_card)
+
+    response = {
+        'outputSpeech': {'type': output_type, 'text': output_speech},
+        'shouldEndSession': False}
+
+    return response
+
+
+def creditcardno_intent(request):
+    global IS_APPLYING
+    if not IS_APPLYING:
+        return advice_intent(request)
+    IS_APPLYING = False
+
+    output_speech = 'that\'s dumb, but ok'
+    output_type = 'PlainText'
+
+    response = {
+        'outputSpeech': {'type': output_type, 'text': output_speech},
+        'shouldEndSession': True}
+
+    return response
+
+
+def creditcardyes_intent(request):
+    global IS_APPLYING
+    if not IS_APPLYING:
+        return advice_intent(request)
+    IS_APPLYING = False
+
+    output_speech = 'Great! I have conveniently filled out the application form and sent you a text message to confirm. Please reply with the last 4 digits of your social security number to finish the application.'
+    output_type = 'PlainText'
 
     response = {
         'outputSpeech': {'type': output_type, 'text': output_speech},
