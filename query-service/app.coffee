@@ -218,5 +218,5 @@ Loader.load().then (collections) ->
         handlers:  handlers
 
     HOST = 'localhost'
-    PORT = 2020
+    PORT = 3030
     service.listen(PORT, HOST, 'http://localhost')
