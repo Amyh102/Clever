@@ -68,9 +68,9 @@ def advice_intent(request):
     credit_card = synchrony.next_card(category)
 
 
-    output_speech = "I've noticed you've spent ${} on {} in the past month, you could save ${} " \
-    "through the end of the year with the {}. Would you like me to apply for you?".format(
-        spend_last_month, category, int(spend_last_month * discount * 4), credit_card
+    output_speech = "I've noticed you've spent ${} on {} in the past month. With the {}, you could save ${} " \
+    "through the end of the year. Would you like me to apply for you?".format(
+        spend_last_month, category, credit_card, int(spend_last_month * discount * 4)
     )
 
     # output_speech = 'Based on your spend in the {} category, you may be interested in applying for a {}. Would you like to apply?'
@@ -150,7 +150,7 @@ def grouping_intent(request):
 
 
 def loyalty_intent(request):
-    timeframe = 'today'
+    timeframe = 'last week'
     if 'value' in request['intent']['slots']['timeframe']:
         timeframe = request['intent']['slots']['timeframe']['value']
 
@@ -169,7 +169,16 @@ def loyalty_intent(request):
 
     response = {
         'outputSpeech': {'type': output_type, 'text': output_speech},
-        'shouldEndSession': True}
+        'shouldEndSession': True,
+        'card': {
+            'type': 'Standard',
+            'title': 'Customer Loyalty',
+            'text': output_speech,
+            'image': {
+                'smallImageUrl': 'https://i.imgur.com/g6cK9m1.png'
+            }
+        }
+    }
 
     return response
 
