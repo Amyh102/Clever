@@ -85,9 +85,17 @@ def grouping_intent(request):
 
 def order_intent(request):
     timeframe = request['intent']['slots']['timeframe']['value']
-    orders = clover.orders(timeframe)
+    orders, ly, g = clover.orders(timeframe)
+    growth = int(g * 100)
+
+    growth_string = ''
+    if growth > 0:
+        growth_string = ', which is a {} percent increase over last year'.format(growth)
+    elif growth < 0:
+        growth_string = ', which is {} percent lower than last year'.format(growth * -1)
 
     output_speech = 'Your had {} orders {}'.format(orders, timeframe)
+    output_speech += growth_string
     output_type = 'PlainText'
 
     response = {
@@ -99,9 +107,19 @@ def order_intent(request):
 
 def revenue_intent(request):
     timeframe = request['intent']['slots']['timeframe']['value']
-    revenue = int(clover.revenue(timeframe))
+    ty, ly, g = clover.revenue(timeframe)
+
+    revenue = int(ty)
+    growth = int(g * 100)
+
+    growth_string = ''
+    if growth > 0:
+        growth_string = ', which is a {} percent increase over last year'.format(growth)
+    elif growth < 0:
+        growth_string = ', which is {} percent lower than last year'.format(growth * -1)
 
     output_speech = 'Your revenue {} was {}'.format(timeframe, '{} dollars'.format(revenue))
+    output_speech += growth_string
     output_type = 'PlainText'
 
     response = {
