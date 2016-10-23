@@ -19,8 +19,26 @@ def orders(timeframe):
     return int(http.content)
 
 
+def kitchen_sandwich():
+    return _request('orders/create', [])
+
+
+def kitchen_openorders():
+    http = _request('orders/open', [])
+    return http.json()
+
+
+def kitchen_closerders():
+    return _request('orders/close', [])
+
+
 def _request(endpoint, params):
-    url = '{}/{}/{}'.format(hostname, endpoint, '/'.join(params))
+
+    if params and len(params) > 0:
+        url = '{}/{}/{}'.format(hostname, endpoint, '/'.join(params))
+    else:
+        url = '{}/{}'.format(hostname, endpoint)
+
     return requests.get(url)
 
 

@@ -31,6 +31,13 @@ def intent_handler(request):
     elif request_name == 'RevenueIntent':
         return revenue_intent(request)
 
+    # Nick Special
+    elif request_name == 'SandwichIntent':
+        return sandwich_intent(request)
+    elif request_name == 'OpenOrdersIntent':
+        return openorders_intent(request)
+    elif request_name == 'CloseOrdersIntent':
+        return closeorders_intent(request)
     return [{}]
 
 
@@ -96,6 +103,55 @@ def revenue_intent(request):
 
     output_speech = 'Your revenue {} was {}'.format(timeframe, '{} dollars'.format(revenue))
     output_type = 'PlainText'
+
+    response = {
+        'outputSpeech': {'type': output_type, 'text': output_speech},
+        'shouldEndSession': True}
+
+    return response
+
+
+def sandwich_intent(request):
+    output_speech = 'Okay, I have put in an order for a sandwich'
+    output_type = 'PlainText'
+
+    clover.kitchen_sandwich()
+
+    response = {
+        'outputSpeech': {'type': output_type, 'text': output_speech},
+        'shouldEndSession': True}
+
+    return response
+
+
+def openorders_intent(request):
+    output_speech = 'There is an open order for {}'
+    output_type = 'PlainText'
+
+    items = clover.kitchen_openorders()
+
+    if not items or len(items) == 0:
+        output_speech = 'You have no open orders'
+    if len(items) == 1:
+        output_speech = output_speech.format('a ' + items[0])
+    else:
+        words = ','.join(items)
+        if len(items) > 1:
+            words = ','.join(items[:-1]) + ', and ' + items[-1]
+        output_speech = output_speech.format(words)
+
+    response = {
+        'outputSpeech': {'type': output_type, 'text': output_speech},
+        'shouldEndSession': True}
+
+    return response
+
+
+def closeorders_intent(request):
+    output_speech = 'Ok, done.'
+    output_type = 'PlainText'
+
+    clover.kitchen_closerders()
 
     response = {
         'outputSpeech': {'type': output_type, 'text': output_speech},
