@@ -2,6 +2,7 @@ import json
 
 import clover
 import synchrony
+import sms
 
 
 # Ugh....
@@ -73,7 +74,7 @@ def creditcardno_intent(request):
         return advice_intent(request)
     IS_APPLYING = False
 
-    output_speech = 'that\'s dumb, but ok'
+    output_speech = "that's ok, i will look for other suggestions"
     output_type = 'PlainText'
 
     response = {
@@ -91,6 +92,8 @@ def creditcardyes_intent(request):
 
     output_speech = 'Great! I have conveniently filled out the application form and sent you a text message to confirm. Please reply with the last 4 digits of your social security number to finish the application.'
     output_type = 'PlainText'
+
+    sms.send_confirmation_text('+14156109104', 'Your credit card application is ready, please reply with the last 4 digits of your SSN to confirm.')
 
     response = {
         'outputSpeech': {'type': output_type, 'text': output_speech},
