@@ -5,8 +5,11 @@ hostname = 'http://localhost:3030'
 
 
 def revenue(timeframe):
+    """ Returns revenue for this year, last year, and YoY growth """
+
     http = _request('reports/revenue', [camel_case(timeframe)])
-    return float(http.content)
+    data = http.json()
+    return float(data['ty']), float(data['ly']), float(data['growth'])
 
 
 def top_n(timeframe, grouping, limit):
@@ -16,7 +19,8 @@ def top_n(timeframe, grouping, limit):
 
 def orders(timeframe):
     http = _request('reports/orders', [camel_case(timeframe)])
-    return int(http.content)
+    data = http.json()
+    return int(data['ty']), int(data['ly']), float(data['growth'])
 
 
 def kitchen_sandwich():
