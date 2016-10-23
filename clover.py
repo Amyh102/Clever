@@ -23,6 +23,14 @@ def orders(timeframe):
     return int(data['ty']), int(data['ly']), float(data['growth'])
 
 
+def report():
+    _request('reports/email', [])
+
+
+def merchant_info():
+    return _request('merchant', []).json()
+
+
 def kitchen_sandwich():
     return _request('orders/create', [])
 

@@ -40,6 +40,8 @@ def intent_handler(request):
         return grouping_intent(request)
     elif request_name == 'OrderIntent':
         return order_intent(request)
+    elif request_name == 'ReportIntent':
+        return report_intent(request)
     elif request_name == 'RevenueIntent':
         return revenue_intent(request)
 
@@ -148,6 +150,19 @@ def order_intent(request):
     output_speech = 'Your had {} orders {}'.format(orders, timeframe)
     output_speech += growth_string
     output_type = 'PlainText'
+
+    response = {
+        'outputSpeech': {'type': output_type, 'text': output_speech},
+        'shouldEndSession': True}
+
+    return response
+
+
+def report_intent(request):
+    output_speech = 'Emailing you the end-of-day report. Have a good night.'
+    output_type = 'PlainText'
+
+    clover.report()
 
     response = {
         'outputSpeech': {'type': output_type, 'text': output_speech},
