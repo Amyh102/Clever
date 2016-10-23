@@ -2,6 +2,7 @@ import clover
 import echo
 import json
 import os
+import re
 import synchrony
 
 from flask import Flask, request
@@ -31,7 +32,8 @@ def synchrony_confirm():
 
     credit_line = status['applyResponse']['applyResponse']['dcTempCreditLine']
     card_number = status['applyResponse']['applyResponse']['accountNumber']
-    return "<br /><br /><center style='font-family: Helvetica, Sans-Serif'>Congratulations, you have been approved with a ${} credit line.<br /><br /><br />{}</center>".format(credit_line, card_number)
+    card_split = " ".join(re.findall('....', card_number))
+    return "<br /><br /><center style='font-family: Helvetica, Sans-Serif'>Congratulations, you have been approved with a ${} credit line.<br /><br /><br />{}</center>".format(credit_line, card_split)
 
 
 if __name__ == '__main__':
