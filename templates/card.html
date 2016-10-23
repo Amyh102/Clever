@@ -59,6 +59,7 @@ h1 {
   margin-bottom: 50px;
   font-family: 'Helvetica Neue';
   font-weight: 300;
+  line-height: 1.6;
 }
 @media only screen
 and (min-device-width : 375px)
@@ -87,12 +88,16 @@ img {
   align-self: center;
 }
 .cc {
-  font-size: 60px;
+/*  font-size: 60px;
   position: absolute;
   top: calc(50% - 0.5em);
-  left: 0;
-  right: 0;
-  text-align: center;
+  left: 10px;
+  right: 10px;
+  text-align: center;*/
+  position: absolute;
+  font-size: 32px;
+  bottom: 2em;
+  left: 2em;
 }
 .logo {
   position: absolute;
@@ -103,7 +108,7 @@ img {
 .name {
   position: absolute;
   font-size: 32px;
-  bottom: 2em;
+  bottom: 4em;
   left: 2em;
 }
 .barcode-container {
@@ -115,7 +120,7 @@ img {
   width: 80%;
 }
 </style>
-<body>
+<meta content="telephone=no" name="format-detection">
 <h1>{{ data.header }}</h1>
 <div class="container">
 <div class="name">{{ data.name }}</div>
