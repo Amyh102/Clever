@@ -1,0 +1,47 @@
+{
+  "intents": [
+    {
+      "intent": "AdviceIntent",
+      "slots": []
+    },
+    {
+      "intent": "GroupingIntent",
+      "slots": [
+        {
+          "name": "grouping",
+          "type": "GROUPING"
+        },
+        {
+          "name": "timeframe",
+          "type": "TIMEFRAME"
+        },
+        {
+          "name": "topN",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
+      "intent": "OrderIntent",
+      "slots": [
+        {
+          "name": "timeframe",
+          "type": "TIMEFRAME"
+        }
+      ]
+    },
+    {
+      "intent": "RevenueIntent",
+      "slots": [
+        {
+          "name": "timeframe",
+          "type": "TIMEFRAME"
+        }
+      ]
+    },
+    {
+      "intent": "HelloWorldIntent",
+      "slots": []
+    }
+  ]
+}

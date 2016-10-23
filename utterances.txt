@@ -1,0 +1,39 @@
+AdviceIntent for advice
+AdviceIntent for some advice
+AdviceIntent if he has any advice
+AdviceIntent if he has any advice for me
+AdviceIntent if she has any advice
+AdviceIntent if she has any advice for me
+
+GroupingIntent what my top {grouping} is
+GroupingIntent what my top {grouping} is {timeframe}
+GroupingIntent what my top {grouping} are {timeframe}
+GroupingIntent what my top {grouping} was {timeframe}
+GroupingIntent what my top {grouping} were {timeframe}
+GroupingIntent what my top {grouping} is for {timeframe}
+GroupingIntent what my top {grouping} are for {timeframe}
+GroupingIntent what my top {grouping} was for {timeframe}
+GroupingIntent what my top {grouping} were for {timeframe}
+GroupingIntent what my top {topN} {grouping} are
+GroupingIntent what my top {topN} {grouping} is {timeframe}
+GroupingIntent what my top {topN} {grouping} are {timeframe}
+GroupingIntent what my top {topN} {grouping} was {timeframe}
+GroupingIntent what my top {topN} {grouping} were {timeframe}
+GroupingIntent what my top {topN} {grouping} is for {timeframe}
+GroupingIntent what my top {topN} {grouping} are for {timeframe}
+GroupingIntent what my top {topN} {grouping} was for {timeframe}
+GroupingIntent what my top {topN} {grouping} were for {timeframe}
+
+OrderIntent how many orders did I do {timeframe}
+OrderIntent how many orders did I did {timeframe}
+OrderIntent how many orders did I have {timeframe}
+OrderIntent how many orders did I had {timeframe}
+
+RevenueIntent what my revenue is {timeframe}
+RevenueIntent what my revenue was {timeframe}
+RevenueIntent what is my revenue {timeframe}
+RevenueIntent what was my revenue {timeframe}
+RevenueIntent what {timeframe} revenue is
+RevenueIntent what {timeframe} revenue was
+
+HelloWorldIntent say hello
