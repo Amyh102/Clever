@@ -2,8 +2,19 @@ AdviceIntent for advice
 AdviceIntent for some advice
 AdviceIntent if he has any advice
 AdviceIntent if he has any advice for me
+AdviceIntent if he has any advice for my business
 AdviceIntent if she has any advice
 AdviceIntent if she has any advice for me
+AdviceIntent if she has any advice for my business
+AdviceIntent for business advice
+AdviceIntent for some business advice
+AdviceIntent if he has any business advice
+AdviceIntent if he has any business advice for me
+AdviceIntent if she has any business advice
+AdviceIntent if she has any business advice for me
+
+CreditCardYesIntent yes
+CreditCardNoIntent no
 
 GroupingIntent what my top {grouping} is
 GroupingIntent what my top {grouping} is {timeframe}
@@ -29,11 +40,14 @@ OrderIntent how many orders did I did {timeframe}
 OrderIntent how many orders did I have {timeframe}
 OrderIntent how many orders did I had {timeframe}
 
+ReportIntent to send me my end of day report
+ReportIntent to send me the end of day report
+ReportIntent to send me my daily report
+ReportIntent to send me the daily report
+
 RevenueIntent what my revenue is {timeframe}
 RevenueIntent what my revenue was {timeframe}
 RevenueIntent what is my revenue {timeframe}
 RevenueIntent what was my revenue {timeframe}
 RevenueIntent what {timeframe} revenue is
 RevenueIntent what {timeframe} revenue was
-
-HelloWorldIntent say hello

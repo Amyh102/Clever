@@ -5,6 +5,14 @@
       "slots": []
     },
     {
+      "intent": "CreditCardNoIntent",
+      "slots": []
+    },
+    {
+      "intent": "CreditCardYesIntent",
+      "slots": []
+    },
+    {
       "intent": "GroupingIntent",
       "slots": [
         {
@@ -31,6 +39,10 @@
       ]
     },
     {
+      "intent": "ReportIntent",
+      "slots": []
+    },
+    {
       "intent": "RevenueIntent",
       "slots": [
         {
@@ -38,10 +50,6 @@
           "type": "TIMEFRAME"
         }
       ]
-    },
-    {
-      "intent": "HelloWorldIntent",
-      "slots": []
     }
   ]
 }
